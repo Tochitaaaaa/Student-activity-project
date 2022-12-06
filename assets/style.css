@@ -19,3 +19,13 @@ nav{
     font-size: 24px;
     font-size: 24px;
 }
+#bookmark-menu{  
+    transition: transform 1s;
+    width: 100px;
+    position: absolute;
+    transform: translateX(-100px);
+}
+
+#bookmark-menu.show {
+    transform: translateX(100px);
+}
