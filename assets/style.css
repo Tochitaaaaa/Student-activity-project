@@ -1,0 +1,35 @@
+nav{
+    display:flex;
+    justify-content: space-between;
+    padding-inline: 25px;
+}
+
+#search-bar{
+    display: flex;
+    justify-content: center;
+}
+#search-input{
+    height: 40px;
+    width: 300px;
+}
+#logo{
+    align-self: center;
+}
+#app-name{
+    font-size: 24px;
+    font-weight: bold;
+}
+#bookmark-menu{  
+    background-color: whitesmoke;
+    transition: transform 0.5s;
+    width: 100px;
+    left: 0px;
+    position: absolute;
+    text-align: center;
+    font-size: 16px;
+    transform: translateX(-100%);
+}
+
+#bookmark-menu.show{
+    transform: translateX(0%);
+}
