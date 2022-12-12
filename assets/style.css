@@ -17,15 +17,19 @@ nav{
 }
 #app-name{
     font-size: 24px;
-    font-size: 24px;
+    font-weight: bold;
 }
 #bookmark-menu{  
-    transition: transform 1s;
+    background-color: whitesmoke;
+    transition: transform 0.5s;
     width: 100px;
+    left: 0px;
     position: absolute;
-    transform: translateX(-100px);
+    text-align: center;
+    font-size: 16px;
+    transform: translateX(-100%);
 }
 
-#bookmark-menu.show {
-    transform: translateX(100px);
+#bookmark-menu.show{
+    transform: translateX(0%);
 }
