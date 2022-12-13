@@ -1,51 +1,62 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="assets/style.css">
-    <script src="https://kit.fontawesome.com/b2a56a4c52.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/style.css" />
+    <script
+      src="https://kit.fontawesome.com/b2a56a4c52.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Trippy</title>
-</head>
+  </head>
 
-<body> <"omars branch">
+  <body>
     <header>
-        <nav>
-            <i id="logo" class="fa-solid fa-tree-city fa-2x"></i>
-            <p id="app-name">Trippy</p>
-        </nav>
+      <nav>
+        <i id="logo" class="fa-solid fa-tree-city fa-2x"></i>
+        <p id="app-name">Trippy</p>
+      </nav>
     </header>
 
     <main>
-        <section id="search-page">
-            <div id="search-bar">
-                <input id="search-input" type="text">
-                <button id="search-button">Search</button>
-            </div>
-        </section>
+      <section id="search-page">
+        <div id="search-bar">
+          <input
+            id="postalcode-input"
+            placeholder="Postal code (e.g. 98105)"
+            type="text"
+          />
+          <input
+            id="search-input"
+            placeholder="Search criteria (e.g. coffee)"
+            type="text"
+          />
+          <button id="search-button" onclick="handleSearch()">Search</button>
+        </div>
+      </section>
 
-        <section id="saved-trips-page">
+      <section id="saved-trips-page"></section>
 
-        </section>
-
-        <section id="activity-page">
-
-        </section>
+      <section id="activity-page">
+        <!--shows results of search -->
+        <div id="resultContainer" class="resultContainer">
+          <!-- <div class="resultItem">
+            <label>Restaurant</label>
+          </div> -->
+        </div>
+      </section>
     </main>
 
     <aside id="bookmark-aside">
-        <button id="toggle-aside">☰</button>
-        <div id="bookmark-menu">
-            <p>trip 1</p>
-            <p>trip 2</p>
-            <p>trip 3</p>
-        </div>
+      <button id="toggle-aside">☰</button>
+      <div id="bookmark-menu">
+        <p>trip 1</p>
+        <p>trip 2</p>
+        <p>trip 3</p>
+      </div>
     </aside>
 
-    <footer>
-
-    </footer>
+    <!-- <footer></footer> -->
     <script src="assets/script.js"></script>
-</body>
-
+  </body>
 </html>
