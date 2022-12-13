@@ -1,9 +1,9 @@
-var toggleAsideEl = document.querySelector("#toggle-aside");
 var bookmarkMenuEl = document.querySelector("#bookmark-menu");
 const resultsContainer = document.getElementById("resultContainer");
+const activitiesContainer = document.getElementById("activitiesContainer");
 var bookMarkMenuVisible = false;
 
-toggleAsideEl.addEventListener("click", function () {
+function toggleBookmarkAside() {
   if (bookMarkMenuVisible === false) {
     bookMarkMenuVisible = true;
     bookmarkMenuEl.classList.add("show");
@@ -11,7 +11,7 @@ toggleAsideEl.addEventListener("click", function () {
     bookmarkMenuEl.classList.remove("show");
     bookMarkMenuVisible = false;
   }
-});
+};
 
 function handleSearch() {
   resultsContainer.innerHTML = ""; // clears results
@@ -66,10 +66,18 @@ function handleSearch() {
             description2.textContent = element.PhoneNumber;
             description2.classList.add("resultText");
 
+            // create button to add to trip
+            const bookmarkButton = document.createElement("button")
+            bookmarkButton.textContent = "Add";
+            bookmarkButton.classList.add("resultText");
+            bookmarkButton.setAttribute("id",title.textContent);
+            bookmarkButton.setAttribute("onclick","bookmarkLocation(this.id)");
+
             // append all nodes to parent container
             div1.appendChild(div2);
             div1.appendChild(description1);
             div1.appendChild(description2);
+            div1.appendChild(bookmarkButton);
 
             // add html to resultsContainer div
             resultsContainer.appendChild(div1);
@@ -84,4 +92,29 @@ function handleSearch() {
     .catch((error) => {
       alert("Something went wrong when calling the API");
     });
+}
+
+//saved an ID of the clicked button to local storage
+function bookmarkLocation(clicked_id) {
+  console.log("bookmarked")
+  localStorage.setItem("activity"+localStorage.length,clicked_id)
+}
+
+//generates a list of all activities in local storage
+function generateActivityList() {
+  for(var i = 0; i<localStorage.length; i++){
+    const div1 = document.createElement("div");
+    div1.classList.add("resultItem");
+    const title = document.createElement("label");
+    title.textContent = localStorage.getItem("activity"+i);
+    title.classList.add("resultTitle");
+    div1.appendChild(title);
+    activitiesContainer.appendChild(div1);
+  }
+}
+
+//clears local storage
+function clearBookmarks() {
+  localStorage.clear();
+  activitiesContainer.innerHTML = ""; // clears bookmark list
 }

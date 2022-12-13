@@ -9,7 +9,7 @@
     ></script>
     <title>Trippy</title>
   </head>
-  <body>
+  <body  onload="generateActivityList()">
     <header>
       <nav>
         <i id="logo" class="fa-solid fa-tree-city fa-2x"></i>
@@ -21,7 +21,12 @@
         <A HREF = "index.html">
           <button id="back-button">Back</button>
         </A>
+        <button id="clear-button" onclick="clearBookmarks()">clear</button>
       </div>
+      <section id="activity-list">
+        <div id="activitiesContainer" class="activitiesContainer">
+        </div>
+      </section>
     </main>
 
     <script src="assets/script.js"></script>

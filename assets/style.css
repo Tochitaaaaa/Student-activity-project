@@ -30,8 +30,11 @@ nav{
     font-size: 16px;
     transform: translateX(-100%);
 }   
-
 #bookmark-menu.show{
     transform: translateX(0%);
 }
-
+.resultItem{
+    border-style: solid hidden hidden hidden;
+    border-width: 1px;
+    border-color: rgb(75, 75, 75);
+}
