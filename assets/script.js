@@ -43,6 +43,9 @@ function handleSearch() {
           // forEach will loop each item in the array 
           data.resourceSets[0].resources.forEach((element) => {
 
+            // search item information object
+            var searchItem = {name:element.name, address:element.Address.formattedAddress, number:element.PhoneNumber}
+
             // create div parent
             const div1 = document.createElement("div");
             div1.classList.add("resultItem");
@@ -70,7 +73,7 @@ function handleSearch() {
             const bookmarkButton = document.createElement("button")
             bookmarkButton.textContent = "Add";
             bookmarkButton.classList.add("resultText");
-            bookmarkButton.setAttribute("id",title.textContent);
+            bookmarkButton.setAttribute("id",JSON.stringify(searchItem));
             bookmarkButton.setAttribute("onclick","bookmarkLocation(this.id)");
 
             // append all nodes to parent container
@@ -96,20 +99,39 @@ function handleSearch() {
 
 //saved an ID of the clicked button to local storage
 function bookmarkLocation(clicked_id) {
-  console.log("bookmarked")
-  localStorage.setItem("activity"+localStorage.length,clicked_id)
-}
+  var alreadyExsists = false;
+  for (i=0; i<localStorage.length; i++) {
+    if(localStorage.getItem("activity"+i) == clicked_id){
+      alreadyExsists = true;
+    }
+  }
+  if (alreadyExsists == false){
+    localStorage.setItem("activity"+localStorage.length,clicked_id)
+  }
+  }
 
 //generates a list of all activities in local storage
 function generateActivityList() {
   for(var i = 0; i<localStorage.length; i++){
+    var bookmarkitem = JSON.parse(localStorage.getItem("activity"+i))
     const div1 = document.createElement("div");
     div1.classList.add("resultItem");
+    const div2 = document.createElement("div");
     const title = document.createElement("label");
-    title.textContent = localStorage.getItem("activity"+i);
+    title.textContent = bookmarkitem.name;
     title.classList.add("resultTitle");
-    div1.appendChild(title);
+    div2.appendChild(title);
+    const description1 = document.createElement("label");
+    description1.textContent = bookmarkitem.address;
+    description1.classList.add("resultText");
+    const description2 = document.createElement("label");
+    description2.textContent = bookmarkitem.number;
+    description2.classList.add("resultText");
+    div1.appendChild(div2);
+    div1.appendChild(description1);
+    div1.appendChild(description2);
     activitiesContainer.appendChild(div1);
+
   }
 }
 
